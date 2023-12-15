@@ -1,5 +1,5 @@
-ACCOUNT_SID = "AC2847dc72bd96e38d5cced67f51ac8566"
-AUTH_TOKEN = "70f06d24069307c258cc379df7be51c6"
-PHONE_TWILIO = "+14155238886"
+ACCOUNT_SID = "Seu sid da conta twilio"
+AUTH_TOKEN = "Seu token da conta"
+PHONE_TWILIO = "Seu numero Twilio"
 INICIAR_BOT = "join cent-automobile"
-DESTINATARIO = "+556298021488"
+DESTINATARIO = "Seu numero aqui" #+55998021488
