@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Python: Flask",
+        "type": "python",
+        "request": "launch",
+        "stopOnEntry": false,
+        "pythonPath": "${workspaceFolder}/venv/Scripts/python.exe",
+        "module": "flask",
+        "args": [
+          "run",
+          "--no-debugger",
+          "--no-reload"
+        ],
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "FLASK_APP": "${workspaceFolder}/src/controller/routes.py",
+          "FLASK_ENV": "development"
+        },
+        "envFile": "${workspaceFolder}/.env",
+        "debugOptions": [
+          "RedirectOutput"
+        ]
+      }
+    ]
+}
