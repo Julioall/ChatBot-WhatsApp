@@ -1,10 +1,10 @@
 import random
 
-'''#Descomente para testar a função
-import mensagem'''
+#Descomente para testar a função
+import mensagem
 
-#Usado quando o sistema em execução  com o whatsApp
-from src.model import mensagem
+'''#Usado quando o sistema em execução  com o whatsApp
+from src.model import mensagem'''
 
 
 nivel_do_menu = ""
@@ -26,7 +26,6 @@ def ler_nivel_do_menu_do_arquivo():
         return ''
 
 def processar_mensagem(resposta_cliente, nivel_do_menu):
-
     # Inicialização do menu
     if resposta_cliente and nivel_do_menu == "":
         resposta_do_bot = random.choice(mensagem.SAUDACAO)
@@ -77,9 +76,6 @@ def processar_mensagem(resposta_cliente, nivel_do_menu):
         resposta_do_bot += mensagem.MENU_PRINCIPAL
         return nivel_do_menu, resposta_do_bot
 
-
-
-
     # Dúvidas Frequentes
     #Opcao menu duvidas frequentes
     if "duvidas frequentes" in resposta_cliente or "2" in resposta_cliente and nivel_do_menu == "menu principal":
@@ -115,6 +111,67 @@ def processar_mensagem(resposta_cliente, nivel_do_menu):
         resposta_do_bot += mensagem.MENU_PRINCIPAL
         return nivel_do_menu, resposta_do_bot
 
+    # SERVICOS_ENERGIA_SOLAR
+    # Opcao menu serviços de energia solar
+    if "servicos de energia solar" in resposta_cliente or "3" in resposta_cliente and nivel_do_menu == "menu principal":
+        resposta_do_bot = exibir_menu(list(mensagem.SERVICOS_ENERGIA_SOLAR.keys()))
+        nivel_do_menu = "servicos de energia solar"
+        return nivel_do_menu, resposta_do_bot
+
+    # SubOpcao menu serviços de energia solar
+    if "instalacao de placas solares" in resposta_cliente or "3.1" in resposta_cliente and nivel_do_menu == "servicos de energia solar":
+        resposta_do_bot = mensagem.SERVICOS_ENERGIA_SOLAR["3.1 - Instalação de Placas Solares"]
+        nivel_do_menu = "menu principal"
+        resposta_do_bot += mensagem.MENU_PRINCIPAL
+        return nivel_do_menu, resposta_do_bot
+
+    # SubOpcao menu serviços de energia solar
+    if "consultoria em eficiencia energetica" in resposta_cliente or "3.2" in resposta_cliente and nivel_do_menu == "servicos de energia solar":
+        resposta_do_bot = mensagem.SERVICOS_ENERGIA_SOLAR["3.2 - Consultoria em Eficiência Energética"]
+        nivel_do_menu = "menu principal"
+        resposta_do_bot += mensagem.MENU_PRINCIPAL
+        return nivel_do_menu, resposta_do_bot
+
+    # SubOpcao menu serviços de energia solar
+    if "manutencao de sistemas solares" in resposta_cliente or "3.3" in resposta_cliente and nivel_do_menu == "servicos de energia solar":
+        resposta_do_bot = mensagem.SERVICOS_ENERGIA_SOLAR["3.3 - Manutenção de Sistemas Solares"]
+        nivel_do_menu = "menu principal"
+        resposta_do_bot += mensagem.MENU_PRINCIPAL
+        return nivel_do_menu, resposta_do_bot
+
+    # Voltar para o menu principal
+    if "Voltar" in resposta_cliente or "0" in resposta_cliente and nivel_do_menu == "servicos de energia solar":
+        resposta_do_bot = "Você voltou para o Menu Principal.\n\n" + mensagem.MENU_PRINCIPAL
+        nivel_do_menu = "menu principal"
+        return nivel_do_menu, resposta_do_bot
+
+
+    # CONTATO
+    # Opcao menu contato
+    if "contato" in resposta_cliente or "4" in resposta_cliente and nivel_do_menu == "menu principal":
+        resposta_do_bot = exibir_menu(list(mensagem.CONTATO.keys()))
+        nivel_do_menu = "contato"
+        return nivel_do_menu, resposta_do_bot
+
+    # SubOpcao menu contato
+    if "fale conosco" in resposta_cliente or "4.1" in resposta_cliente and nivel_do_menu == "contato":
+        resposta_do_bot = mensagem.CONTATO["4.1 - Fale Conosco"]
+        nivel_do_menu = "menu principal"
+        resposta_do_bot += mensagem.MENU_PRINCIPAL
+        return nivel_do_menu, resposta_do_bot
+
+    # SubOpcao menu contato
+    if "localizacao" in resposta_cliente or "4.2" in resposta_cliente and nivel_do_menu == "contato":
+        resposta_do_bot = mensagem.CONTATO["4.2 - Localização"]
+        nivel_do_menu = "menu principal"
+        resposta_do_bot += mensagem.MENU_PRINCIPAL
+        return nivel_do_menu, resposta_do_bot
+
+    # Voltar para o menu principal
+    if "Voltar" in resposta_cliente or "0" in resposta_cliente and nivel_do_menu == "contato":
+        resposta_do_bot = "Você voltou para o Menu Principal.\n\n" + mensagem.MENU_PRINCIPAL
+        nivel_do_menu = "menu principal"
+        return nivel_do_menu, resposta_do_bot
 
     #Se o cliente mandar uma msg que não possa ser respondida.
     else:
@@ -123,9 +180,9 @@ def processar_mensagem(resposta_cliente, nivel_do_menu):
         nivel_do_menu = "menu principal"
         return nivel_do_menu, resposta_do_bot
 
-'''#Descomente para testar a função
+#Descomente para testar a função
 # Exemplo de uso
 while True:
     msg_cliente = input("Mensagem Cliente: ")
     nivel_do_menu, resposta = processar_mensagem(msg_cliente, nivel_do_menu)
-    print(f"Resposta bot: \n{resposta}")'''
+    print(f"Resposta bot: \n{resposta}")

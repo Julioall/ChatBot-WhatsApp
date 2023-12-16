@@ -6,7 +6,7 @@
         "type": "python",
         "request": "launch",
         "stopOnEntry": false,
-        "pythonPath": "${workspaceFolder}/venv/Scripts/python.exe",
+        "python": "${workspaceFolder}/venv/Scripts/python.exe",
         "module": "flask",
         "args": [
           "run",
